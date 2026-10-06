@@ -43,21 +43,6 @@ credit_df.drop(['Loan ID', 'Customer ID'], axis = 1, inplace=True)
 from sklearn.preprocessing import LabelEncoder
 le = LabelEncoder()
  
-binary_cols = [col for col in credit_df.columns if credit_df[col].dtype == 'str' and
-               credit_df[col].nunique()>1]
-print(binary_cols)
- 
-for col in binary_cols:
-    # fit() - train label encoder with input samples
-    # transform() - apply changes and transform existing dataframe samples.
-    credit_df[col] = le.fit_transform(credit_df[col])
- 
-# 6. Features & Target
-X = credit_df.drop('Loan Status', axis = 1)
-Y = credit_df['Loan Status']
- 
-print(X.head())
-print(Y.head())
  
 binary_cols = [col for col in credit_df.columns if credit_df[col].dtype == 'str' and
                credit_df[col].nunique()>1]
